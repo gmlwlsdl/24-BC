@@ -7,6 +7,13 @@ public class LoginManager {
 			user.setEmail("alice@myserver.com");
 			return true;
 		}
-		else return false;
+		else if (user.getUserid().equals("alice") && !(user.getPasswd().equals("1234"))) {
+			user.setError("비밀번호가 틀렸습니다람쥐");
+			
+		}
+		else if(!(user.getUserid().equals("alice")) && user.getPasswd().equals("1234")) {
+			user.setError("ID가 틀렸다람쥐");
+		}
+		return false;		
 	}
 }
