@@ -23,6 +23,6 @@
 	
 	<context:component-scan base-package="com.company.hello" />
 	
-	
+	<!-- <beans:bean id="memberSerivce" class="com.company.hello.member.MemberService" /> -->
 	
 </beans:beans>

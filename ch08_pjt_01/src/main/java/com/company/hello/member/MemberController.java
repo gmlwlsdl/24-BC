@@ -1,11 +1,15 @@
 package com.company.hello.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MemberController {
+	
+	@Autowired
+	MemberService memberService;
 	
 	@RequestMapping("/signUp")
 	public String signUp() {
@@ -18,20 +22,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/signUpConfirm")
-	public String signUpConfirm(
-			@RequestParam String m_id,
-			@RequestParam String m_pw,
-			@RequestParam String m_mail,
-			@RequestParam String m_phone
-			) {
+	public String signUpConfirm(MemberVo memberVo) {
 		
 		System.out.println("[MemberController] signUpConfirm()");
 		
-		System.out.println("m_id: " + m_id);
-		System.out.println("m_pw: " + m_pw);
-		System.out.println("m_mail: " + m_mail);
-		System.out.println("m_phone: " + m_phone);
+		System.out.println("m_id: " + memberVo.getM_id());
+		System.out.println("m_pw: " + memberVo.getM_pw());
+		System.out.println("m_mail: " + memberVo.getM_mail());
+		System.out.println("m_phone: " + memberVo.getM_phone());
 		
+		memberService.signUpConfirm(memberVo);
 		return null;
 	}
 }
